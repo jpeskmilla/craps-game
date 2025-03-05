@@ -2,7 +2,9 @@
 
 ## Author Data:
 **Name:** Juan Pablo Escamilla
+
 **Student Code:** 2420580-2724
+
 **Submission Date:** March 15th, 2025.
 
 ## Documentation
