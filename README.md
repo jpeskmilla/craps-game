@@ -1,9 +1,9 @@
-### FPOE's First Project 
+# FPOE's First Project 
 
 ## Author Data:
-**Name:** Juan Pablo Escamilla
+**Name:** Juan Pablo Escamilla.
 
-**Student Code:** 2420580-2724
+**Student Code:** 2420580-2724.
 
 **Submission Date:** March 15th, 2025.
 
