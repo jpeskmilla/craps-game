@@ -1,4 +1,5 @@
 # FPOE's First Project 
+This is the first FPOE mini-proyect, which consist of making a Crap Game.
 
 ## Author Data:
 **Name:** Juan Pablo Escamilla.
