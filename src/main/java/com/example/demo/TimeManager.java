@@ -24,9 +24,8 @@ public class TimeManager {
              * Este bloque de codigo permite pausar la ejecucion del programa durante
              * segundo, para asi poder ir disminuyendo el tiempo de juego.
              */
-            try {
-                Thread.sleep(1000); // Pausa de 1 segundo
-            } catch (InterruptedException e) {System.out.println("Se acabo el tiempo");}
+            try { Thread.sleep(1000); } // Pausa de un segundo.
+            catch (InterruptedException e) {System.out.println("Se acabo el tiempo");}
 
         };
     }

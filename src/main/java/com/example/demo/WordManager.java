@@ -13,9 +13,7 @@ public class WordManager {
      * Constructor de la clase WordManager.
      * Inicializa una nueva palabra aleatoria automáticamente.
      */
-    public WordManager() {
-        this.randomWord = generateWords(); // Generar la palabra al azar al inicializar el objeto
-    }
+    public WordManager() { this.randomWord = generateWords(); }
 
     /**
      * Genera una palabra aleatoria seleccionada de un conjunto predefinido de palabras.
@@ -34,9 +32,7 @@ public class WordManager {
      *
      * @return La palabra generada.
      */
-    public String getRandomWord() {
-        return randomWord;
-    }
+    public String getRandomWord() { return randomWord; }
 
     public String userInput() {
         Scanner scanner = new Scanner(System.in);
@@ -52,15 +48,10 @@ public class WordManager {
      * @param userInput La palabra ingresada por el usuario.
      * @return {@code true} si las palabras coinciden, {@code false} de lo contrario.
      */
-    public boolean checkWord(String userInput) {
-
-        return userInput.equalsIgnoreCase(randomWord); // Comparar palabras ignorando mayúsculas y minúsculas
-    }
+    public boolean checkWord(String userInput) { return userInput.equalsIgnoreCase(randomWord); }
 
     /**
      * Genera una nueva palabra aleatoria, reemplazando la generada previamente.
      */
-    public void regenerateWord() {
-        this.randomWord = generateWords();
-    }
+    public void regenerateWord() { this.randomWord = generateWords(); }
 }
