@@ -1,4 +1,9 @@
+/**
+ * @author Juan Pablo Escamilla (2420580-2724)
+ */
+
 package com.example.demo;
+
 
 public class Main {
     LevelManager levelManager = new LevelManager();

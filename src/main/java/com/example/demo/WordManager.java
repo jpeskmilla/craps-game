@@ -34,6 +34,11 @@ public class WordManager {
      */
     public String getRandomWord() { return randomWord; }
 
+    /**
+     * Permite capturar la palabra ingresada por el usuario
+     *
+     * @return La entrada que ingresó el usuario
+     */
     public String userInput() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese una palabra:");
