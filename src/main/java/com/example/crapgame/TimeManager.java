@@ -1,6 +1,4 @@
-package com.example.demo;
-
-import java.util.concurrent.TimeUnit;
+package com.example.crapgame;
 
 /**
  * Clase `Persona` que modela a una persona con atributos y comportamientos básicos.

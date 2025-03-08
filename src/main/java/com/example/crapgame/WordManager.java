@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.crapgame;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -39,7 +39,7 @@ public class WordManager {
      *
      * @return La entrada que ingresó el usuario
      */
-    public String userInput() {
+    public String   userInput() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese una palabra:");
         String userWordInput = scanner.nextLine();

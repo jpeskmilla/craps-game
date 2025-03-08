@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.crapgame;
 
 /*
 * Esta clase va a ser la encargada de manejar todo lo que este relacionado con las vidas

@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.crapgame;
 
 /*
 * Clase que se encarga de manejar todo lo relacionado con los niveles. En ella podemos encontrar
@@ -13,7 +13,7 @@ public class LevelManager {
     public LevelManager() { } // Metodo constructor vacio.
 
     /**
-     * Método para obtener el nivel del juego.
+     * Metodo para obtener el nivel del juego.
      *
      * @return El nivel en el que se encuentra el jugador
      */
