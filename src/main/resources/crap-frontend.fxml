@@ -11,7 +11,7 @@
    <children>
       <ImageView fx:id="lifesImageView" fitHeight="91.0" fitWidth="91.0" layoutX="265.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
       <TextField fx:id="inputField" layoutX="176.0" layoutY="263.0" prefHeight="26.0" prefWidth="249.0" promptText="Ingresa aquí la palabra" />
-      <Button fx:id="validateButton" layoutX="437.0" layoutY="263.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="validateButton" layoutX="437.0" layoutY="263.0" mnemonicParsing="false" text="Enviar" />
       <Label fx:id="levelLabel" layoutX="14.0" layoutY="345.0" text="Nivel: X">
          <font>
             <Font size="29.0" />
