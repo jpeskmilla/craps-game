@@ -3,7 +3,8 @@ module com.example.crapgame {
     requires javafx.fxml;
     requires java.desktop;
 
-
+    opens com.example.crapgame.controller to javafx.fxml;
     opens com.example.crapgame to javafx.fxml;
+
     exports com.example.crapgame;
 }
