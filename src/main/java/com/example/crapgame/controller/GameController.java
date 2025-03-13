@@ -4,23 +4,32 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class GameController {
 
-    @FXML private Label wordLabel;
-    @FXML private TextField inputField;
-    @FXML private Button validateButton;
-    @FXML private ProgressBar eclipseProgress;
-    @FXML private Label timerLabel;
-    @FXML private Label levelLabel;
-    @FXML private Label messageLabel;
+    @FXML
+    private Label wordLabel;
+    @FXML
+    private TextField inputField;
+    @FXML
+    private Button validateButton;
+    @FXML
+    private Label timerLabel;
+    @FXML
+    private Label levelLabel;
+    @FXML
+    private Label messageLabel;
+    @FXML
+    private ImageView lifesImageView;
 
     private List<String> words = Arrays.asList("casa", "perro", "rápido", "computadora", "java", "programación", "teclado", "pantalla", "ratón", "ventana");
     private int level = 1;
@@ -38,7 +47,6 @@ public class GameController {
 
     public GameController() {}
 
-
     private void setupEvents() {
         validateButton.setOnAction(e -> validateWord());
         inputField.setOnKeyPressed(e -> {
@@ -52,11 +60,11 @@ public class GameController {
         level = 1;
         timeRemaining = 20;
         opportunities = 4;
-        eclipseProgress.setProgress(1.0);
         messageLabel.setText("");
         updateLevelLabel();
         showNewWord();
         startTimer();
+        updateLifesImage();
     }
 
     private void showNewWord() {
@@ -84,17 +92,27 @@ public class GameController {
             messageLabel.setText("¡Correcto!");
             increaseLevel();
         } else {
-            messageLabel.setText("¡Incorrecto, intenta de nuevo!");
+            opportunities--;
+            updateLifesImage();
+            messageLabel.setText("Palabra incorrecta. Oportunidades restantes: " + opportunities);
+            if (opportunities <= 0) {
+                endGame();
+            }
         }
     }
 
     private void handleError() {
         timer.stop();
+        if (inputField.getText().trim().equals(currentWord)) {
+            messageLabel.setText("¡Correcto!");
+            increaseLevel();
+            return;
+        }
         opportunities--;
-        updateEclipseProgress();
+        updateLifesImage();
         messageLabel.setText("Tiempo agotado. Oportunidades restantes: " + opportunities);
         if (opportunities > 0) {
-            resetLevel();
+            endGame();
         } else {
             endGame();
         }
@@ -105,6 +123,9 @@ public class GameController {
         updateLevelLabel();
         adjustTimePerLevel();
         showNewWord();
+
+        timeRemaining = calculateTimeByLevel();
+        updateTimerLabel();
         startTimer();
     }
 
@@ -124,21 +145,18 @@ public class GameController {
     }
 
     private int calculateTimeByLevel() {
-        int reducedTime = 20 - ((level / 5) * 2);
-        return Math.max(reducedTime, 2);
+        // Start with 20 seconds, and reduce by 2 seconds for each 5 levels completed
+        int baseTime = 20;
+        int reduction = (level - 1) / 5 * 2; // Subtract 2 seconds every 5 levels
+        return Math.max(baseTime - reduction, 2); // Ensure minimum time is 2 seconds
     }
 
     private void updateTimerLabel() {
-        timerLabel.setText("Tiempo: " + timeRemaining + "s");
+        timerLabel.setText(timeRemaining + "s");
     }
 
     private void updateLevelLabel() {
         levelLabel.setText("Nivel: " + level);
-    }
-
-    private void updateEclipseProgress() {
-        double progress = opportunities / 4.0;
-        eclipseProgress.setProgress(progress);
     }
 
     private void endGame() {
@@ -146,5 +164,28 @@ public class GameController {
         messageLabel.setText("Lograste llegar al nivel: " + level);
         inputField.setDisable(true);
         validateButton.setDisable(true);
+        timer.stop();
+    }
+
+    private void updateLifesImage() {
+        String imagePath = "/images/4_lifes.png"; // Imagen por defecto
+
+        switch (opportunities) {
+            case 3:
+                imagePath = "/images/3_lifes.png";
+                break;
+            case 2:
+                imagePath = "/images/2_lifes.png";
+                break;
+            case 1:
+                imagePath = "/images/1_lifes.png";
+                break;
+            case 0:
+                imagePath = "/images/0_lifes.png";
+                break;
+        }
+
+        Image lifesImage = new Image(getClass().getResourceAsStream(imagePath));
+        lifesImageView.setImage(lifesImage);
     }
 }
